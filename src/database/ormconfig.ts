@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
+
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const typeOrmModuleOptions: TypeOrmModuleOptions = {
@@ -8,14 +11,14 @@ export const typeOrmModuleOptions: TypeOrmModuleOptions = {
   password: process.env.POSTGRES_PASSWORD,
   port: parseInt(<string>process.env.POSTGRES_PORT),
   logging: process.env.POSTGRES_LOG === 'true',
-  entities: [__dirname + 'src/**/entities/*.entity.ts'],
+  entities: [`${__dirname}/../**/entities/*.entity{.ts,.js}`],
   autoLoadEntities: true,
   synchronize: false,
 };
 
 export const ormConfig = {
   ...typeOrmModuleOptions,
-  migrations: [__dirname + 'src/database/migrations/*.ts'],
+  migrations: [`${__dirname}/../../src/database/migrations/*.entity{.ts,.js}`],
   cli: {
     migrationsDir: 'src/database/migrations',
   },

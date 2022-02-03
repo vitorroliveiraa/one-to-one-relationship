@@ -11,7 +11,7 @@ export const typeOrmModuleOptions: TypeOrmModuleOptions = {
   password: process.env.POSTGRES_PASSWORD,
   port: parseInt(<string>process.env.POSTGRES_PORT),
   logging: process.env.POSTGRES_LOG === 'true',
-  entities: [`${__dirname}/../**/entities/*.entity{.ts,.js}`],
+  entities: [`${__dirname}/../../src/**/entities/*.entity{.ts,.js}`],
   autoLoadEntities: true,
   synchronize: false,
 };
